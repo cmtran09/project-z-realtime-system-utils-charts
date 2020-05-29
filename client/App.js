@@ -3,10 +3,17 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 import ReactDOM from 'react-dom'
 
 import './styles/styles.scss'
+import NavBar from './components/NavBar/NavBar'
 
 const App = () => {
   return (
-    <p>hello world</p>
+    <React.Fragment>
+      <div className="background">
+        <NavBar />
+        {/* <img src="/assets/images/bg-blue-large.png" alt="" /> */}
+        <p>hello world</p>
+      </div>
+    </React.Fragment>
   )
 }
 
