@@ -4,13 +4,14 @@ import ReactDOM from 'react-dom'
 
 import './styles/styles.scss'
 import NavBar from './components/NavBar/NavBar'
+import Dashboard from './components/Dashboard/Dashboard'
 
 const App = () => {
   return (
     <React.Fragment>
       <div className="background">
         <NavBar />
-        {/* <img src="/assets/images/bg-blue-large.png" alt="" /> */}
+        <Dashboard />
         <p>hello world</p>
       </div>
     </React.Fragment>

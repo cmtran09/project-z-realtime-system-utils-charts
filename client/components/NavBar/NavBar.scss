@@ -10,3 +10,16 @@ p {
 // #2D3686 mid  blue
 // #3A408F ligthest blue
 
+.ui.massive.inverted.top.fixed.navbar.menu {
+  background-color: transparent;
+  // margin-bottom: 500px;
+}
+
+.ui.fixed.menu+.ui.grid {
+  padding-top: 5rem;
+}
+
+.ui.stackable.column {
+  margin-left: 5%;
+  margin-right: 5%;
+}
