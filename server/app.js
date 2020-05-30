@@ -8,7 +8,12 @@ const app = express()
 
 const server = http.createServer(app)
 const io = socketio(server)
-const os = require('os-utils');
+const osUtils = require('os-utils');
+
+const osu = require('node-os-utils')
+const cpu = osu.cpu
+const drive = osu.drive
+
 
 
 // // for deployment
@@ -26,20 +31,61 @@ app.use((req, resp, next) => {
 
 
 
-os.cpuUsage((value) => console.log(`CPU Usage (%): ${value}`))
+osUtils.cpuUsage((value) => console.log(`CPU Usage (%): ${value}`))
 
-os.cpuFree((value) => console.log(`cpu free: ${value}`))
-console.log(`platform: ${os.platform()}`)
-console.log(`freemem: ${os.freemem()}`)
-console.log(`totalmem: ${os.totalmem()}`)
-console.log(`freememPercentage: ${os.freememPercentage()}`)
-console.log(`sysUptime: ${os.sysUptime()}`)
-console.log(`processUptime: ${os.processUptime()}`)
-console.log(`cpu count: ${os.cpuCount()}`)
+osUtils.cpuFree((value) => console.log(`cpu free: ${value}`))
+console.log(`platform: ${osUtils.platform()}`)
+console.log(`freemem: ${osUtils.freemem()}`)
+console.log(`totalmem: ${osUtils.totalmem()}`)
+console.log(`freememPercentage: ${osUtils.freememPercentage()}`)
+console.log(`sysUptime: ${osUtils.sysUptime()}`)
+console.log(`processUptime: ${osUtils.processUptime()}`)
+console.log(`cpu count: ${osUtils.cpuCount()}`)
 
-console.log(`average load for 1 minutes: ${os.loadavg(1)}`)
-console.log(`average load for 5 minutes: ${os.loadavg(5)}`)
-console.log(`average load for 15 minutes: ${os.loadavg(15)}`)
+console.log(`average load for 1 minutes: ${osUtils.loadavg(1)}`)
+console.log(`average load for 5 minutes: ${osUtils.loadavg(5)}`)
+console.log(`average load for 15 minutes: ${osUtils.loadavg(15)}`)
+
+console.log(`cpu model`, cpu.model())
+// drive.info()
+//   .then(info => {
+//     console.log('hdddrive:', info)
+//   })
+
+// var netstat = osu.netstat
+
+osu.netstat.inOut()
+  .then(info => {
+    console.log(info)
+  })
+  .catch(err => console.log(err))
+
+osu.mem.info()
+  .then(info => console.log('mem', info))
+  .catch(err => console.log(err))
+
+
+osu.openfiles.openFd()
+  .then(info => console.log('mem', info))
+  .catch(err => console.log(err))
+
+osu.os.oos()
+  .then(info => console.log('platform', info))
+  .catch(err => console.log(err))
+
+console.log('playt', osu.os.platform())
+
+console.log('IP', osu.os.ip())
+console.log('Hostname', osu.os.hostname())
+console.log('OS TYPE', osu.os.type())
+console.log('OS ARCH', osu.os.arch())
+// osu.os.info()
+//   .then(info => console.log('os', info))
+//   .catch(err => console.log(err))
+
+
+// console.log(`arch ${osu.os.type()}`)
+// console.log(`os ${osu.oos()}`)
 
 // console.log(`cpuFree: ${os.cpuFree()}`)
 
