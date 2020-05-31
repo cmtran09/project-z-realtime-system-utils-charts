@@ -12,6 +12,8 @@ export default function Dashboard() {
         <Grid.Column>
           <Segment>
             <p>Platform</p>
+            <p>Architecture</p>
+            <p>OS Type</p>
           </Segment>
         </Grid.Column>
         <Grid.Column>
