@@ -14,17 +14,18 @@ export default function Dashboard() {
             <p>Platform</p>
             <p>Architecture</p>
             <p>OS Type</p>
+            <p>Hostname</p>
           </Segment>
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <p>Free Memory</p>
+            <p>Free Memory (DISK)</p>
           </Segment>
         </Grid.Column>
         <Grid.Column>
           <Segment>
             <FreeMemoryPercentage />
-            <p>Free Memory Percentage</p>
+            <p>Free Memory (RAM) Percentage</p>
           </Segment>
         </Grid.Column>
       </Grid>
@@ -32,6 +33,7 @@ export default function Dashboard() {
         <Grid.Column>
           <Segment>
             <p>CPU Usage</p>
+            <p>CPU Model</p>
             <CPUUsage />
           </Segment>
         </Grid.Column>
@@ -58,7 +60,6 @@ export default function Dashboard() {
           <Segment>
             <SystemUptime />
             <p>System Uptime</p>
-
           </Segment>
         </Grid.Column>
       </Grid>

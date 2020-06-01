@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 const server = http.createServer(app)
-const io = socketio(server)
+const io = socketio(server, {
+  transports: ['websocket', 'polling']
+})
 const osUtils = require('os-utils');
 
 const osu = require('node-os-utils')
@@ -27,9 +29,6 @@ app.use((req, resp, next) => {
   console.log(`${req.method} to ${req.url}`)
   next()
 })
-
-
-
 
 osUtils.cpuUsage((value) => console.log(`CPU Usage (%): ${value}`))
 
@@ -87,23 +86,17 @@ console.log('IP', osu.os.ip())
 console.log('Hostname', osu.os.hostname())
 console.log('OS TYPE', osu.os.type())
 console.log('OS ARCH', osu.os.arch())
-// osu.os.info()
-//   .then(info => console.log('os', info))
-//   .catch(err => console.log(err))
 
-
-// console.log(`arch ${osu.os.type()}`)
-// console.log(`os ${osu.oos()}`)
-
-// console.log(`cpuFree: ${os.cpuFree()}`)
-
-// os.countCPUs((value) => console.log(`countCPUs: ${value}`))
-// os.freemem((value) => console.log(`freemem: ${value}`))
-// os.totalmem((value) => console.log(`totalmem: ${value}`))
-// os.freememPercentage((value) => console.log(`freememPercentage: ${value}`))
-// os.sysUptime((value) => console.log(`sysUptime: ${value}`))
-// os.processUptime((value) => console.log(`processUptime: ${value}`))
-// os.cpuFree((value) => console.log(`cpu free: ${value}`))
+io.on('connection', client => {
+  setInterval(() => {
+    osUtils.cpuUsage((cpuPercent) => {
+      client.emit('cpuPercent', {
+        value: cpuPercent,
+        name: 'cpuPercent'
+      })
+    })
+  }, 1000)
+})
 
 
 // for development
