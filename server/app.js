@@ -47,10 +47,18 @@ console.log(`average load for 5 minutes: ${osUtils.loadavg(5)}`)
 console.log(`average load for 15 minutes: ${osUtils.loadavg(15)}`)
 
 console.log(`cpu model`, cpu.model())
-// drive.info()
-//   .then(info => {
-//     console.log('hdddrive:', info)
-//   })
+
+osu.drive.info()
+  .then(info => {
+    console.log('hdddrive:', info)
+  })
+  .catch(err => console.log(err))
+
+osu.drive.free()
+  .then(info => {
+    console.log('hdddrive free:', info)
+  })
+  .catch(err => console.log(err))
 
 // var netstat = osu.netstat
 
@@ -67,11 +75,11 @@ osu.mem.info()
 
 osu.openfiles.openFd()
   .then(info => console.log('mem', info))
-  .catch(err => console.log(err))
+  .catch(err => console.log('openfiles', err))
 
 osu.os.oos()
   .then(info => console.log('platform', info))
-  .catch(err => console.log(err))
+  .catch(err => console.log('osu.os.oos()', err))
 
 console.log('playt', osu.os.platform())
 
