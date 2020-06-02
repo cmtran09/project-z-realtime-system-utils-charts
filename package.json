@@ -27,6 +27,7 @@
     "semantic-ui-react": "^0.88.2",
     "socket.io": "^2.3.0",
     "style-loader": "^1.2.1",
+    "systeminformation": "^4.26.5",
     "url-loader": "^4.1.0"
   },
   "devDependencies": {
