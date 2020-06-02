@@ -96,6 +96,15 @@ io.on('connection', client => {
       })
     })
   }, 1000)
+  osUtils.cpuUsage((freeMemoryPercentage) => {
+    client.emit('freeMemoryPercentage', [{
+      value: Number((freeMemoryPercentage * 100).toFixed(2)),
+      name: 'freeMemoryPercentage'
+    }, {
+      value: Number(((1 - freeMemoryPercentage) * 100).toFixed(2)),
+      name: 'usedMemoryPercentage'
+    }])
+  })
 })
 
 

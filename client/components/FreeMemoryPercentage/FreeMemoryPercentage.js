@@ -1,68 +1,56 @@
 import React from 'react'
-import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts'
+import { useEffect, useState } from 'react'
+import { LabelList, RadialBar, Legend, Tooltip, PieChart, Pie, Label, Cell } from 'recharts'
+import io from 'socket.io-client'
+// import { Label } from 'semantic-ui-react'
 
-const data = [
-  {
-    "name": "18-24",
-    "uv": 31.47,
-    "pv": 2400,
-    "fill": "#8884d8"
-  },
-  {
-    "name": "25-29",
-    "uv": 26.69,
-    "pv": 4567,
-    "fill": "#83a6ed"
-  },
-  {
-    "name": "30-34",
-    "uv": -15.69,
-    "pv": 1398,
-    "fill": "#8dd1e1"
-  },
-  {
-    "name": "35-39",
-    "uv": 8.22,
-    "pv": 9800,
-    "fill": "#82ca9d"
-  },
-  {
-    "name": "40-49",
-    "uv": -8.63,
-    "pv": 3908,
-    "fill": "#a4de6c"
-  },
-  {
-    "name": "50+",
-    "uv": -2.63,
-    "pv": 4800,
-    "fill": "#d0ed57"
-  },
-  {
-    "name": "unknow",
-    "uv": 6.67,
-    "pv": 4800,
-    "fill": "#ffc658"
-  }
-]
+const socket = io('http://localhost:5000', {
+  transports: ['webscoket', 'polling']
+})
 
 export default function FreeMemoryPercentage() {
+  const [freeMemoryPercentage, setFreeMemoryPercentage] = useState([])
+  const [popup, setPopup] = useState(false)
+
+  useEffect(() => {
+    socket.on('freeMemoryPercentage', (data) => {
+      setFreeMemoryPercentage(...freeMemoryPercentage, data)
+    })
+  }, [])
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    return (
+      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="outside">
+        {`${(percent * 100).toFixed(2)}%`}
+      </text>
+    );
+  };
+
   return (
     // heloo FreeMemoryPercentage
-    < RadialBarChart
-      width={730}
-      height={250}
-      innerRadius="10%"
-      outerRadius="80%"
-      data={data}
-      startAngle={780}
-      endAngle={0}
+    <PieChart width={800} height={400}
+    // onMouseEnter={this.onPieEnter}
     >
-      {/* write a funtion to so one revolution is 1hr*/}
-      <RadialBar animationDuration={4500} minAngle={15} label={{ fill: '#666', position: 'insideStart' }
-      } background clockWise={true} dataKey='uv' />
-      <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
-      <Tooltip />
-    </RadialBarChart >
+      <Legend verticalAlign="top" height={36} />
+      <Pie
+        data={freeMemoryPercentage}
+        cx={300}
+        cy={200}
+        labelLine={false}
+        label={renderCustomizedLabel}
+        outerRadius={100}
+        fill="#8884d8"
+      >
+        {
+          freeMemoryPercentage.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+        }
+      </Pie>
+    </PieChart>
   )
 }
