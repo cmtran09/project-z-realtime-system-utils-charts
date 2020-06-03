@@ -1,6 +1,8 @@
 const express = require('express')
 const socketio = require('socket.io')
 const http = require('http')
+const moment = require("moment");
+
 
 const PORT = process.env.PORT || 5000
 
@@ -152,6 +154,9 @@ io.on('connection', client => {
       client.emit('diskInfo', info)
     })
     .catch(err => console.log(err))
+  client.emit('systemUptime', { 
+    systemUptimeSeconds: osUtils.sysUptime() 
+  })
 })
 
 
