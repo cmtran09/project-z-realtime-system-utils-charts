@@ -48,7 +48,7 @@ export default function FreeMemoryPercentage() {
         fill="#8884d8"
       >
         {
-          freeMemoryPercentage.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]} />)
+          freeMemoryPercentage.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)
         }
       </Pie>
     </PieChart>

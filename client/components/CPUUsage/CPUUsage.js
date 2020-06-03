@@ -7,25 +7,21 @@ const socket = io('http://localhost:5000', {
   transports: ['webscoket', 'polling']
 })
 
-export default function CPUUsage() {
+export default function CpuUsage() {
   const [cpuUsageData, setCpuUsageData] = useState([])
-  const [cpuData, setCpuData] = useState({})
-
-  // console.log(cpuUsageData)
+  const [cpuTemp, setCpuTemp] = useState({})
 
   useEffect(() => {
     socket.on('cpuPercent', (cpuPercent) => {
       setCpuUsageData(currentData => [...currentData, cpuPercent])
     })
-    socket.on('cpuInformation', (cpuInformation) => {
-      setCpuData(cpuInformation)
-    })
     socket.on('cpuTemperature', (cpuTemperature) => {
-      console.log('cpuTemperature', cpuTemperature)
+      setCpuTemp(cpuTemperature)
     })
   }, [])
 
-  console.log(cpuData)
+  // console.log('cpuData', cpuData)
+  // console.log('cpuTemp', cpuTemp)
 
   return (
     <LineChart
@@ -45,6 +41,3 @@ export default function CPUUsage() {
     </LineChart>
   )
 }
-
-
-

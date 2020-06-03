@@ -9,7 +9,7 @@ export default function NavBar() {
       <Container>
         <Menu.Item header>
           {/* <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} /> */}
-          <i class="microchip icon"></i>
+          <i className="microchip icon"></i>
           System Utility Monitor
         </Menu.Item>
         {/* <Menu.Item as='a'>Home</Menu.Item> */}

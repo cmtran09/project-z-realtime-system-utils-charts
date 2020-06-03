@@ -93,6 +93,7 @@ console.log('OS TYPE', osu.os.type())
 console.log('OS ARCH', osu.os.arch())
 
 io.on('connection', client => {
+  //convert data to percent and 2 decimal places
   setInterval(() => {
     osUtils.cpuUsage((cpuPercent) => {
       client.emit('cpuPercent', {
@@ -104,7 +105,7 @@ io.on('connection', client => {
   si.cpu()
     .then(data => {
       client.emit('cpuInformation', {
-        manufucturer: data.manufacturer,
+        manufacturer: data.manufacturer,
         brand: data.brand,
         speed: data.speed,
         speedMax: data.speedmax,
@@ -131,7 +132,26 @@ io.on('connection', client => {
       name: 'usedMemoryPercentage'
     }])
   })
-
+  osu.mem.info()
+    .then(info => {
+      client.emit('ramInfo', info)
+    })
+    .catch(err => console.log(err))
+  osu.os.oos()
+    .then(info => {
+      client.emit('systemData', {
+        platform: info,
+        hostname: osu.os.hostname(),
+        architecture: osu.os.arch(),
+        osType: osu.os.type()
+      })
+    })
+    .catch(err => console.log('===osu.os.oos()', err))
+  osu.drive.info()
+    .then(info => {
+      client.emit('diskInfo', info)
+    })
+    .catch(err => console.log(err))
 })
 
 
