@@ -19,19 +19,10 @@ const drive = osu.drive
 
 const si = require('systeminformation');
 
-si.cpu()
-  .then(data => {
-    console.log('CPU Information:');
-    console.log('- manufucturer: ' + data.manufacturer);
-    console.log('- brand: ' + data.brand);
-    console.log('- speed: ' + data.speed);
-    console.log('- cores: ' + data.cores);
-    console.log('- physical cores: ' + data.physicalCores);
-    console.log('...');
-  })
-  .catch(error => console.error(error));
 
 si.cpuTemperature().then(data => console.log('tempppp', data))
+
+si.graphics().then(data => console.log("GRA{HICS", data));
 // // for deployment
 
 // const path = require('path')
@@ -110,6 +101,27 @@ io.on('connection', client => {
       })
     })
   }, 1000)
+  si.cpu()
+    .then(data => {
+      client.emit('cpuInformation', {
+        manufucturer: data.manufacturer,
+        brand: data.brand,
+        speed: data.speed,
+        speedMax: data.speedmax,
+        speedMin: !data.speedmin === true ? 'system not supported' : data.speedmin,
+        cores: data.cores,
+        physicalCores: data.physicalCores,
+      })
+    })
+    .catch(error => console.error(error));
+  si.cpuTemperature()
+    .then(data => {
+      client.emit('cpuTemperature', {
+        mainTemp: data.main === -1 ? 'system not supported' : data.main,
+        coresTemp: data.cores.length === 0 ? 'system not supported' : data.cores,
+        maxTemp: data.max === -0 ? 'system not supported' : data.max,
+      })
+    })
   osUtils.cpuUsage((freeMemoryPercentage) => {
     client.emit('freeMemoryPercentage', [{
       value: Number((freeMemoryPercentage * 100).toFixed(2)),
@@ -119,6 +131,7 @@ io.on('connection', client => {
       name: 'usedMemoryPercentage'
     }])
   })
+
 })
 
 

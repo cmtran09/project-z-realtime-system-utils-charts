@@ -9,6 +9,7 @@ const socket = io('http://localhost:5000', {
 
 export default function CPUUsage() {
   const [cpuUsageData, setCpuUsageData] = useState([])
+  const [cpuData, setCpuData] = useState({})
 
   // console.log(cpuUsageData)
 
@@ -16,7 +17,15 @@ export default function CPUUsage() {
     socket.on('cpuPercent', (cpuPercent) => {
       setCpuUsageData(currentData => [...currentData, cpuPercent])
     })
+    socket.on('cpuInformation', (cpuInformation) => {
+      setCpuData(cpuInformation)
+    })
+    socket.on('cpuTemperature', (cpuTemperature) => {
+      console.log('cpuTemperature', cpuTemperature)
+    })
   }, [])
+
+  console.log(cpuData)
 
   return (
     <LineChart
@@ -36,3 +45,6 @@ export default function CPUUsage() {
     </LineChart>
   )
 }
+
+
+
