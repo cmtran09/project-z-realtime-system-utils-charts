@@ -9,6 +9,7 @@ import SystemInformation from '../../components/SystemInformation/SystemInformat
 import DiskMemory from '../../components/DiskMemory/DiskMemory'
 import RamInfo from '../../components/RamInfo/RamInfo'
 import GraphicsAndDisplays from '../../components/GraphicsAndDisplays/GraphicsAndDisplays'
+import Battery from '../../components/Battery/Battery'
 
 export default function Dashboard() {
   return (
@@ -57,35 +58,14 @@ export default function Dashboard() {
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <p>Free Memory Percentage</p>
+            <p>Battery</p>
+            <Battery />
           </Segment>
         </Grid.Column>
         <Grid.Column>
           <Segment>
             <SystemUptime />
             <p>System Uptime</p>
-          </Segment>
-        </Grid.Column>
-      </Grid>
-      <Grid stackable columns={4}>
-        <Grid.Column>
-          <Segment>
-            <p>CPU Count</p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Average Load 1 min</p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Average Load 2 min</p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Average Load 5 min</p>
           </Segment>
         </Grid.Column>
       </Grid>

@@ -162,7 +162,11 @@ io.on('connection', client => {
       client.emit('graphicsAndDisplays', data)
     })
     .catch(err => console.log(err))
-
+  si.battery()
+    .then(data => {
+      client.emit('batteryData', data)
+    })
+    .catch(err => console.log(err))
 })
 
 
