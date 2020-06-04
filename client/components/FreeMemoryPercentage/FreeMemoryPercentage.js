@@ -32,14 +32,12 @@ export default function FreeMemoryPercentage() {
     );
   };
 
-  console.log('freeMemoryPercentage', freeMemoryPercentage)
-
   return (
     // heloo FreeMemoryPercentage
     <PieChart width={800} height={400}
     // onMouseEnter={this.onPieEnter}
     >
-      <Legend verticalAlign="top" height={36} />
+      {/* <Legend verticalAlign="top" height={36} /> */}
       <Pie
         data={freeMemoryPercentage}
         cx={300}

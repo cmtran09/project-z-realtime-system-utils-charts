@@ -13,21 +13,21 @@ export default function GraphicsAndDisplays() {
   const [graphicsAndDisplayData, setGraphicsAndDisplayData] = useState('')
 
   useEffect(() => {
-    let unmounted = false
+    let unmounted = false;
     socket.on('graphicsAndDisplays', (data) => {
-      setGraphicsAndDisplayData(data)
+      if (!unmounted) {
+        setGraphicsAndDisplayData(data)
+      }
     })
-    return () => {
-      unmounted = true
-    }
+    return () => { unmounted = true };
   }, [])
-
-  console.log('graphicsAndDisplayData', graphicsAndDisplayData)
 
   return (
     <div>
+      <p>Graphics</p>
       {graphicsAndDisplayData && graphicsAndDisplayData.controllers.map((elem, index) => <Graphic key={index} graphicData={elem} />)}
-      {/* {graphicsAndDisplayData.displays && graphicsAndDisplayData.displays.map((elem, index) => <Display key={index} displayData={elem} />)} */}
+      <p>Displays</p>
+      {graphicsAndDisplayData && graphicsAndDisplayData.displays.map((elem, index) => <Display key={index} displayData={elem} />)}
     </div>
   )
 }

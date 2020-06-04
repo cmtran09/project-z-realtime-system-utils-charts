@@ -103,7 +103,7 @@ io.on('connection', client => {
         name: 'cpuPercent'
       })
     })
-  }, 1000)
+  }, 2000)
   si.cpu()
     .then(data => {
       client.emit('cpuInformation', {

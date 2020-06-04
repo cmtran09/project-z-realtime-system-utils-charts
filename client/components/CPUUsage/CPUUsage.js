@@ -12,7 +12,6 @@ export default function CpuUsage() {
   const [cpuTemp, setCpuTemp] = useState({})
 
   useEffect(() => {
-
     // Add function to limit the data to 5 mins (5mins * 60 seconds=total number of ticks)
     socket.on('cpuPercent', (cpuPercent) => {
       setCpuUsageData(currentData => [...currentData, cpuPercent])

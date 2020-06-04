@@ -36,28 +36,33 @@ export default function SystemUptime() {
   console.log("systemUptime", systemUptime)
 
   const formatData = (systemUptime) => {
-
-    //fix this, wrong days and mins mixed up
-    const timeArr = (moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm:ss').split(':')).map(elem => Number(elem))
-    const formattedData = [
-      {
-        name: 'days',
-        value: timeArr[0],
-        fill: "#8884d8"
-      },
-      {
-        name: 'hours',
-        value: timeArr[1],
-        fill: "#83a6ed"
-      },
-      {
-        name: 'mins',
-        value: timeArr[2],
-        fill: "#8dd1e1"
-      }
-    ]
-    return formattedData
-  }
+      const timeArr = (moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm').split(':')).map(elem => Number(elem))
+      const formattedData = [
+        {
+          name: 'days',
+          value: timeArr.length === 3 ? timeArr[0] :
+            0,
+          fill: "#8884d8"
+        },
+        {
+          name: 'hours',
+          value: timeArr.length === 3 ? timeArr[1] :
+            timeArr.length === 2 ? timeArr[0] :
+              0,
+          fill: "#83a6ed"
+        },
+        {
+          name: 'mins',
+          value: timeArr.length === 3 ? timeArr[2] :
+            timeArr.length === 2 ? timeArr[1] :
+              timeArr.length === 1 ? timeArr[0] :
+                0,
+          fill: "#8dd1e1"
+        }
+      ]
+      return formattedData
+    }
+  
 
   useEffect(() => {
     socket.on('systemUptime', (systemUptimeData) => {
@@ -65,6 +70,33 @@ export default function SystemUptime() {
       setSystemUptime(data)
     })
   }, [])
+
+  const tomArr = (moment.duration(66, "seconds").format('DD:HH:mm').split(':')).map(elem => Number(elem))
+  const foData = [
+    {
+      name: 'days',
+      value: tomArr.length === 3 ? tomArr[0] :
+        0,
+      fill: "#8884d8"
+    },
+    {
+      name: 'hours',
+      value: tomArr.length === 3 ? tomArr[1] :
+        tomArr.length === 2 ? tomArr[0] :
+          0,
+      fill: "#83a6ed"
+    },
+    {
+      name: 'mins',
+      value: tomArr.length === 3 ? tomArr[2] :
+        tomArr.length === 2 ? tomArr[1] :
+          tomArr.length === 1 ? tomArr[0] :
+            0,
+      fill: "#8dd1e1"
+    }
+  ]
+  console.log('tomArrtomArrtomArr', tomArr)
+  console.log('====tomArrtomArrtomArr', foData)
 
   return (
     <React.Fragment>

@@ -3,11 +3,10 @@ import React from 'react'
 export default function Graphic(props) {
   return (
     <div>
-      hello
-      <p>Model: {props.graphicsData.model}</p>
-      <p>Vendor: {props.graphicsData.vendor}</p>
-      <p>Bus: {props.graphicsData.bus}</p>
-      <p>vRAM: {props.graphicsData.vram}</p>
+      <p>Model: {props.graphicData.model}</p>
+      <p>Vendor: {props.graphicData.vendor}</p>
+      <p>Bus: {props.graphicData.bus}</p>
+      <p>vRAM: {props.graphicData.vram}</p>
     </div>
   )
 }

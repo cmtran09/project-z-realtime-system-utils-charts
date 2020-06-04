@@ -9,9 +9,13 @@ export default function CpuInformation() {
   const [cpuData, setCpuData] = useState({})
 
   useEffect(() => {
+    let unmounted = false;
     socket.on('cpuInformation', (cpuInformation) => {
+      if (!unmounted) {
       setCpuData(cpuInformation)
+      }
     })
+    return () => { unmounted = true };
   }, [])
 
   return (
