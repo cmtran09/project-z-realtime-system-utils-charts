@@ -24,7 +24,7 @@ const si = require('systeminformation');
 
 si.cpuTemperature().then(data => console.log('tempppp', data))
 
-si.graphics().then(data => console.log("GRA{HICS", data));
+si.graphics().then(data => console.log("GRAPHICS", data));
 // // for deployment
 
 // const path = require('path')
@@ -154,9 +154,15 @@ io.on('connection', client => {
       client.emit('diskInfo', info)
     })
     .catch(err => console.log(err))
-  client.emit('systemUptime', { 
-    systemUptimeSeconds: osUtils.sysUptime() 
+  client.emit('systemUptime', {
+    systemUptimeSeconds: osUtils.sysUptime()
   })
+  si.graphics()
+    .then(data => {
+      client.emit('graphicsAndDisplays', data)
+    })
+    .catch(err => console.log(err))
+
 })
 
 

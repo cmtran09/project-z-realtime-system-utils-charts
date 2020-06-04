@@ -36,6 +36,8 @@ export default function SystemUptime() {
   console.log("systemUptime", systemUptime)
 
   const formatData = (systemUptime) => {
+
+    //fix this, wrong days and mins mixed up
     const timeArr = (moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm:ss').split(':')).map(elem => Number(elem))
     const formattedData = [
       {

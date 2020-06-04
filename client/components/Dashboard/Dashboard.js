@@ -8,6 +8,7 @@ import CpuInformation from '../../components/CpuInformation/CpuInformation'
 import SystemInformation from '../../components/SystemInformation/SystemInformation'
 import DiskMemory from '../../components/DiskMemory/DiskMemory'
 import RamInfo from '../../components/RamInfo/RamInfo'
+import GraphicsAndDisplays from '../../components/GraphicsAndDisplays/GraphicsAndDisplays'
 
 export default function Dashboard() {
   return (
@@ -50,7 +51,8 @@ export default function Dashboard() {
       <Grid stackable columns={3}>
         <Grid.Column>
           <Segment>
-            <p>Process Uptime</p>
+            <p>Graphics and Displays</p>
+            <GraphicsAndDisplays />
           </Segment>
         </Grid.Column>
         <Grid.Column>

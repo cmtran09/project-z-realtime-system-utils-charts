@@ -2,7 +2,6 @@ import React from 'react'
 import { RadialBarChart, RadialBar, Legend, Tooltip, PolarAngleAxis } from 'recharts'
 
 export default function Hours(props) {
-  console.log('hours', props.hours)
   return (
     <RadialBarChart
       width={150}
@@ -10,7 +9,7 @@ export default function Hours(props) {
       innerRadius="70%"
       outerRadius="100%"
       data={props.hours}
-      startAngle={360 * 2}
+      startAngle={360}
       endAngle={0}
     >
       {/* write a funtion to so one revolution is 1hr */}
@@ -22,7 +21,7 @@ export default function Hours(props) {
       />
       <RadialBar
         animationDuration={5000}
-        minAngle={15}
+        minAngle={5}
         label={{ fill: '#666', position: 'insideStart' }}
         background
         clockWise={true}

@@ -32,6 +32,8 @@ export default function FreeMemoryPercentage() {
     );
   };
 
+  console.log('freeMemoryPercentage', freeMemoryPercentage)
+
   return (
     // heloo FreeMemoryPercentage
     <PieChart width={800} height={400}
