@@ -64,20 +64,10 @@ export default function SystemUptime() {
     })
   }, [])
 
-
-
-  // console.log("formatted", formatData(systemUptime))
-
-  // console.log("DATASADSADASDASDASDASDASASD", data)
-  console.log("===========DATASADSADASDASDASDASDASASD", systemUptime)
-
-  //SPLIT COMPONTNETS UP INDIIDUAL COMPONENT FOR EACHT TIME METRIC 
-
   return (
     <React.Fragment>
-      {/* <button onClick={e => console.log(moment.duration(systemUptime.systemUptimeSeconds), "seconds").format("hh:mm:ss")}>click</button> */}
       <div>
-        <p>{`System Uptime secs:${systemUptime.systemUptimeSeconds}`}</p>
+        <p>{`System Uptime`}</p>
         <Days days={[systemUptime[0]]} />
         <Hours hours={[systemUptime[1]]} />
         <Mins mins={[systemUptime[2]]} />

@@ -3,7 +3,7 @@ import { RadialBarChart, RadialBar, Legend, Tooltip, PolarAngleAxis } from 'rech
 
 export default function Mins(props) {
   console.log(props.mins)
-  console.log('mins',props.mins.value)
+  console.log('mins', props.mins.value)
 
   return (
     <RadialBarChart
@@ -22,8 +22,22 @@ export default function Mins(props) {
         angleAxisId={0}
         tick={false}
       />
-      <RadialBar animationDuration={4500} minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='value' />
+      <RadialBar
+        animationDuration={4500}
+        minAngle={15}
+        label={{ fill: '#666', position: 'insideStart' }}
+        background clockWise={true}
+        dataKey='value' />
       {/* <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" /> */}
+      <text
+        x={150 / 2}
+        y={150 / 2}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        className="progress-label"
+      >
+        {`${props.mins[0].value} Mins`}
+      </text>
       <Tooltip />
     </RadialBarChart>
   )

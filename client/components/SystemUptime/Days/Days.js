@@ -28,6 +28,15 @@ export default function Days(props) {
         clockWise={true}
         dataKey='value' />
       {/* <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" /> */}
+      <text
+        x={150 / 2}
+        y={150 / 2}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        className="progress-label"
+      >
+        {`${props.days[0].value} Days`}
+      </text>
       <Tooltip />
     </RadialBarChart>
   )
