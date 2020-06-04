@@ -12,46 +12,64 @@ const socket = io('http://localhost:5000', {
   transports: ['webscoket', 'polling']
 })
 
-export default function SystemUptime() {
-  const [systemUptime, setSystemUptime] = useState({})
+const initialUptime = [
+  {
+    name: 'days',
+    value: 0,
+    fill: "#8884d8"
+  },
+  {
+    name: 'hours',
+    value: 0,
+    fill: "#83a6ed"
+  },
+  {
+    name: 'mins',
+    value: 0,
+    fill: "#8dd1e1"
+  }
+]
 
-  useEffect(() => {
-    socket.on('systemUptime', (systemUptimeData) => {
-      setSystemUptime(systemUptimeData)
-    })
-  }, [])
+export default function SystemUptime() {
+  const [systemUptime, setSystemUptime] = useState(initialUptime)
+
+  console.log("systemUptime", systemUptime)
 
   const formatData = (systemUptime) => {
-    const timeArr = moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm:ss').split(':')
+    const timeArr = (moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm:ss').split(':')).map(elem => Number(elem))
     const formattedData = [
       {
         name: 'days',
-        value: Number(timeArr[0]),
+        value: timeArr[0],
         fill: "#8884d8"
       },
       {
         name: 'hours',
-        value: Number(timeArr[1]),
+        value: timeArr[1],
         fill: "#83a6ed"
       },
       {
         name: 'mins',
-        value: Number(timeArr[2]),
+        value: timeArr[2],
         fill: "#8dd1e1"
-      },
-      {
-        name: 'seconds',
-        value: Number(timeArr[3]),
-        fill: "#82ca9d"
       }
     ]
     return formattedData
   }
 
-  console.log("formatted", formatData(systemUptime))
+  useEffect(() => {
+    socket.on('systemUptime', (systemUptimeData) => {
+      const data = formatData(systemUptimeData)
+      setSystemUptime(data)
+    })
+  }, [])
 
-  const data = formatData(systemUptime)
-  console.log("DATASADSADASDASDASDASDASASD", data)
+
+
+  // console.log("formatted", formatData(systemUptime))
+
+  // console.log("DATASADSADASDASDASDASDASASD", data)
+  console.log("===========DATASADSADASDASDASDASDASASD", systemUptime)
 
   //SPLIT COMPONTNETS UP INDIIDUAL COMPONENT FOR EACHT TIME METRIC 
 
@@ -60,9 +78,9 @@ export default function SystemUptime() {
       {/* <button onClick={e => console.log(moment.duration(systemUptime.systemUptimeSeconds), "seconds").format("hh:mm:ss")}>click</button> */}
       <div>
         <p>{`System Uptime secs:${systemUptime.systemUptimeSeconds}`}</p>
-        <Days days={[data[0]]} />
-        <Hours hours={[data[1]]} />
-        <Mins mins={[data[2]]} />
+        <Days days={[systemUptime[0]]} />
+        <Hours hours={[systemUptime[1]]} />
+        <Mins mins={[systemUptime[2]]} />
       </div>
     </React.Fragment>
   )
