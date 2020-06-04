@@ -2,6 +2,8 @@ import React from 'react'
 import { RadialBarChart, RadialBar, Legend, Tooltip, PolarAngleAxis } from 'recharts'
 
 export default function Mins(props) {
+  console.log(props.mins)
+  console.log('mins',props.mins.value)
 
   return (
     <RadialBarChart

@@ -26,22 +26,22 @@ export default function SystemUptime() {
     const formattedData = [
       {
         name: 'days',
-        value: timeArr[0],
+        value: Number(timeArr[0]),
         fill: "#8884d8"
       },
       {
         name: 'hours',
-        value: timeArr[1],
+        value: Number(timeArr[1]),
         fill: "#83a6ed"
       },
       {
         name: 'mins',
-        value: timeArr[2],
+        value: Number(timeArr[2]),
         fill: "#8dd1e1"
       },
       {
         name: 'seconds',
-        value: timeArr[3],
+        value: Number(timeArr[3]),
         fill: "#82ca9d"
       }
     ]
