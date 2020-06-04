@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts'
 import moment from 'moment'
 import "moment-duration-format"
 
 import io from 'socket.io-client'
+
+import Mins from './Mins/Mins'
+import Hours from './Hours/Hours'
+import Days from './Days/Days'
 
 const socket = io('http://localhost:5000', {
   transports: ['webscoket', 'polling']
@@ -56,22 +59,10 @@ export default function SystemUptime() {
     <React.Fragment>
       {/* <button onClick={e => console.log(moment.duration(systemUptime.systemUptimeSeconds), "seconds").format("hh:mm:ss")}>click</button> */}
       <div>
-        <RadialBarChart
-          width={730}
-          height={250}
-          innerRadius="40%"
-          outerRadius="100%"
-          data={data}
-          startAngle={360}
-          endAngle={0}
-        >
-          {/* write a funtion to so one revolution is 1hr */}
-
-          <RadialBar animationDuration={4500} minAngle={15} label={{ fill: '#666', position: 'insideStart' }} background clockWise={true} dataKey='value' />
-          <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" />
-          <Tooltip />
-        </RadialBarChart>
         <p>{`System Uptime secs:${systemUptime.systemUptimeSeconds}`}</p>
+        <Days days={[data[0]]} />
+        <Hours hours={[data[1]]} />
+        <Mins mins={[data[2]]} />
       </div>
     </React.Fragment>
   )
