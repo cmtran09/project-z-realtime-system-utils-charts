@@ -7,12 +7,9 @@ import './SystemUptime.scss'
 
 import io from 'socket.io-client'
 
-
 import Mins from './Mins/Mins'
 import Hours from './Hours/Hours'
 import Days from './Days/Days'
-
-
 
 const socket = io('http://localhost:5000', {
   transports: ['webscoket', 'polling']
@@ -38,8 +35,6 @@ const initialUptime = [
 
 export default function SystemUptime() {
   const [systemUptime, setSystemUptime] = useState(initialUptime)
-
-  console.log("systemUptime", systemUptime)
 
   const formatData = (systemUptime) => {
     const timeArr = (moment.duration(systemUptime.systemUptimeSeconds, "seconds").format('DD:HH:mm').split(':')).map(elem => Number(elem))
@@ -68,7 +63,6 @@ export default function SystemUptime() {
     ]
     return formattedData
   }
-
 
   useEffect(() => {
     socket.on('systemUptime', (systemUptimeData) => {
@@ -103,21 +97,16 @@ export default function SystemUptime() {
   ]
 
   return (
-    <React.Fragment>
-      <div>
-        <p>{`System Uptime`}</p>
-        <Grid className='system-uptime-charts' columns={3}>
-          <Grid.Column>
-            <Days days={[systemUptime[0]]} />
-          </Grid.Column>
-          <Grid.Column>
-            <Hours hours={[systemUptime[1]]} />
-          </Grid.Column>
-          <Grid.Column>
-            <Mins mins={[systemUptime[2]]} />
-          </Grid.Column>
-        </Grid>
-      </div>
-    </React.Fragment >
+    <Grid className='system-uptime-charts' columns={3}>
+      <Grid.Column>
+        <Days days={[systemUptime[0]]} />
+      </Grid.Column>
+      <Grid.Column>
+        <Hours hours={[systemUptime[1]]} />
+      </Grid.Column>
+      <Grid.Column>
+        <Mins mins={[systemUptime[2]]} />
+      </Grid.Column>
+    </Grid>
   )
 }

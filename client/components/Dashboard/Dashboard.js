@@ -22,8 +22,8 @@ export default function Dashboard() {
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <p>Free Memory (DISK)</p>
-            <DiskMemory />
+            <p>Battery</p>
+            <Battery />
           </Segment>
         </Grid.Column>
         <Grid.Column>
@@ -57,14 +57,14 @@ export default function Dashboard() {
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <p>Battery</p>
-            <Battery />
+            <p>Free Memory (DISK)</p>
+            <DiskMemory />
           </Segment>
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <SystemUptime />
             <p>System Uptime</p>
+            <SystemUptime />
           </Segment>
         </Grid.Column>
       </Grid>

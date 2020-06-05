@@ -34,6 +34,8 @@ export default function FreeMemoryPercentage() {
 
   const circleSize = 370
 
+  console.log('freeMemoryPercentage',freeMemoryPercentage)
+
   return (
     // heloo FreeMemoryPercentage
     // <ResponsiveContainer width={700} height="80%">

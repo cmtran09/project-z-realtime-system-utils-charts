@@ -19,9 +19,6 @@ export default function BatteryChart(props) {
       "Current": 0
     }
   ])
-  console.log('batteryChartDatabatteryChartData', batteryChartData)
-  console.log('chartData', props.chartData)
-  console.log('unit', props.capacityUnit)
 
   useEffect(() => {
     setBatteryChartData(props.chartData)

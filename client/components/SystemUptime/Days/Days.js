@@ -2,7 +2,6 @@ import React from 'react'
 import { RadialBarChart, RadialBar, Legend, Tooltip, PolarAngleAxis } from 'recharts'
 
 export default function Days(props) {
-  console.log(props.days)
   return (
     <RadialBarChart
       width={125}

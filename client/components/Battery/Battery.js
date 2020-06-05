@@ -16,7 +16,7 @@ export default function Battery() {
       setBatteryData(data)
     })
   }, [])
-  console.log('batteryData', batteryData)
+
   return (
     //render only if it has a battery (hasbattery) if not cancel
     <div>
