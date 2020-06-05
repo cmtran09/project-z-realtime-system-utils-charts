@@ -37,18 +37,17 @@ export default function Dashboard() {
       <Grid stackable columns={1}>
         <Grid.Column>
           <Segment>
-            <CpuInformation />
-            <CpuUsage />
+            <Grid stackable columns={2}>
+              <Grid.Column width={3}>
+                <CpuInformation />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <CpuUsage />
+              </Grid.Column>
+            </Grid>
           </Segment>
         </Grid.Column>
       </Grid>
-      {/* <Grid stackable columns={1}>
-        <Grid.Column>
-          <Segment>
-            <p>System Uptime</p>
-          </Segment>
-        </Grid.Column>
-      </Grid> */}
       <Grid stackable columns={3}>
         <Grid.Column>
           <Segment>
