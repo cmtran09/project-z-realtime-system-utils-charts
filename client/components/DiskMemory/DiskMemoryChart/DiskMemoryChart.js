@@ -26,7 +26,7 @@ export default function DiskMemoryChart(props) {
     );
   };
 
-  // const circleSize = 370
+  const circleSize = 370
 
   console.log(diskMemoryData)
 
@@ -38,15 +38,15 @@ export default function DiskMemoryChart(props) {
     <div>
       DiskMemoryChart.js
       <PieChart
-        width={200} height={200}
+        width={circleSize} height={circleSize/1.7}
       >
         <Pie
           data={diskMemoryData}
-          cx={200 / 2}
-          cy={200 / 2}
+          cx={circleSize / 2}
+          cy={circleSize / 3.7}
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={100}
+          outerRadius={75}
           fill="#8884d8"
         >
           {
