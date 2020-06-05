@@ -7,8 +7,8 @@ export default function Mins(props) {
 
   return (
     <RadialBarChart
-      width={150}
-      height={150}
+      width={125}
+      height={125}
       innerRadius="70%"
       outerRadius="100%"
       data={props.mins}
@@ -30,8 +30,8 @@ export default function Mins(props) {
         dataKey='value' />
       {/* <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" /> */}
       <text
-        x={150 / 2}
-        y={150 / 2}
+        x={125 / 2}
+        y={125 / 2}
         textAnchor="middle"
         dominantBaseline="middle"
         className="progress-label"
