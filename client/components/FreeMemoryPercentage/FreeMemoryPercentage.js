@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { LabelList, RadialBar, Legend, Tooltip, PieChart, Pie, Label, Cell } from 'recharts'
+import { LabelList, RadialBar, Legend, Tooltip, PieChart, Pie, Label, Cell, ResponsiveContainer } from 'recharts'
 import io from 'socket.io-client'
 // import { Label } from 'semantic-ui-react'
 
@@ -32,16 +32,21 @@ export default function FreeMemoryPercentage() {
     );
   };
 
+  const circleSize = 370
+
   return (
     // heloo FreeMemoryPercentage
-    <PieChart width={800} height={400}
+    // <ResponsiveContainer width={700} height="80%">
+    <PieChart
+      width={circleSize} height={circleSize/1.7}
     // onMouseEnter={this.onPieEnter}
     >
       {/* <Legend verticalAlign="top" height={36} /> */}
       <Pie
+
         data={freeMemoryPercentage}
-        cx={300}
-        cy={200}
+        cx={circleSize/2}
+        cy={circleSize/3.7}
         labelLine={false}
         label={renderCustomizedLabel}
         outerRadius={100}
@@ -52,5 +57,6 @@ export default function FreeMemoryPercentage() {
         }
       </Pie>
     </PieChart>
+    // </ResponsiveContainer>
   )
 }
