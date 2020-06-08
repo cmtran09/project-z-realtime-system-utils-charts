@@ -19,11 +19,9 @@ export default function DiskMemory() {
   return (
     <React.Fragment>
       <div>
-        <p>{`totalGB:${diskInfo.totalGb}`}</p>
-        <p>{`usedGb:${Number(diskInfo.totalGb - diskInfo.freeGb).toFixed(1)}`}</p>
-        <p>{`freeGb:${diskInfo.freeGb}`}</p>
-        <p>{`usedPercentage:${100 - ((diskInfo.freeGb / diskInfo.totalGb) * 100).toFixed(1)}`}</p>
-        <p>{`freePercentage:${((diskInfo.freeGb / diskInfo.totalGb) * 100).toFixed(1)}`}</p>
+        <p>{`Total Disk Size: ${diskInfo.totalGb}`}</p>
+        <p>{`Used Space: ${Number(diskInfo.totalGb - diskInfo.freeGb).toFixed(1)}`}</p>
+        <p>{`Free Space: ${diskInfo.freeGb}`}</p>
       </div>
       <DiskMemoryChart diskData={[
         {

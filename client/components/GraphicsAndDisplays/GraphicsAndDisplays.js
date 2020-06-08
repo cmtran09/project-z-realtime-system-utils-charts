@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Divider } from 'semantic-ui-react'
 
 import io from 'socket.io-client'
 
@@ -26,6 +27,7 @@ export default function GraphicsAndDisplays() {
     <div>
       <p>Graphics</p>
       {graphicsAndDisplayData && graphicsAndDisplayData.controllers.map((elem, index) => <Graphic key={index} graphicData={elem} />)}
+      <Divider section />
       <p>Displays</p>
       {graphicsAndDisplayData && graphicsAndDisplayData.displays.map((elem, index) => <Display key={index} displayData={elem} />)}
     </div>

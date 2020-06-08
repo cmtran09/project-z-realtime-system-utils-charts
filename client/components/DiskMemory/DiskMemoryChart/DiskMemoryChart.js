@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts'
+
+import './DiskMemoryChart.scss'
 
 const initialDiskData = [
   {
@@ -20,7 +22,7 @@ export default function DiskMemoryChart(props) {
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
     return (
-      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="outside">
+      <text className='pie-label' x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="outside">
         {`${(percent * 100).toFixed(2)}%`}
       </text>
     );
@@ -28,7 +30,7 @@ export default function DiskMemoryChart(props) {
 
   const circleSize = 370
 
-  console.log(diskMemoryData)
+  console.log('diskMemoryData', diskMemoryData)
 
   useEffect(() => {
     setDiskMemoryData(props.diskData)
@@ -36,9 +38,8 @@ export default function DiskMemoryChart(props) {
 
   return (
     <div>
-      DiskMemoryChart.js
       <PieChart
-        width={circleSize} height={circleSize/1.7}
+        width={circleSize} height={circleSize / 1.7}
       >
         <Pie
           data={diskMemoryData}
@@ -53,6 +54,7 @@ export default function DiskMemoryChart(props) {
             diskMemoryData.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]} />)
           }
         </Pie>
+        <Legend verticalAlign="bottom" height={36} wrapperStyle={{ padding: 20 }} />
       </PieChart>
     </div>
   )

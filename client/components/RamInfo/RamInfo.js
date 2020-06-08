@@ -11,13 +11,13 @@ export default function RamInfo() {
   useEffect(() => {
     socket.on('ramInfo', (data) => setRamInfo(data))
   }, [])
-  console.log(ramInfo)
+
   return (
     <div>
-      <p>{`totalMemMb:${ramInfo.totalMemMb}Mb`}</p>
-      <p>{`usedMemMb:${ramInfo.usedMemMb}Mb`}</p>
+      <p>{`Total Available RAM: ${ramInfo.totalMemMb}Mb`}</p>
+      {/* <p>{`usedMemMb:${ramInfo.usedMemMb}Mb`}</p>
       <p>{`freeMemMb:${ramInfo.freeMemMb}Mb`}</p>
-      <p>{`freeMemPercentage:${ramInfo.freeMemPercentage}Mb`}</p>
+      <p>{`freeMemPercentage:${ramInfo.freeMemPercentage}Mb`}</p> */}
     </div>
   )
 }

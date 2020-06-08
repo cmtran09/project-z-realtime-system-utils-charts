@@ -11,28 +11,36 @@ import RamInfo from '../../components/RamInfo/RamInfo'
 import GraphicsAndDisplays from '../../components/GraphicsAndDisplays/GraphicsAndDisplays'
 import Battery from '../../components/Battery/Battery'
 
+import './Dashboard.scss'
+
 export default function Dashboard() {
   return (
     <React.Fragment>
       <Grid stackable columns={3}>
-        <Grid.Column>
-          <Segment>
-            <SystemInformation />
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Battery</p>
-            <Battery />
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Free Memory (RAM) Percentage</p>
-            <FreeMemoryPercentage />
-            <RamInfo />
-          </Segment>
-        </Grid.Column>
+        <Grid.Row stretched>
+          <Grid.Column>
+            <Segment>
+              <SystemInformation />
+            </Segment>
+            <Segment>
+              <p>System Uptime</p>
+              <SystemUptime />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column className='battery-column'>
+            <Segment>
+              <p>Battery</p>
+              <Battery />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>
+              <p>Random Access Memory</p>
+              <FreeMemoryPercentage />
+              <RamInfo />
+            </Segment>
+          </Grid.Column>
+        </Grid.Row >
       </Grid>
       <Grid stackable columns={1}>
         <Grid.Column>
@@ -49,24 +57,29 @@ export default function Dashboard() {
         </Grid.Column>
       </Grid>
       <Grid stackable columns={3}>
-        <Grid.Column>
-          <Segment>
-            <p>Graphics and Displays</p>
-            <GraphicsAndDisplays />
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>Free Memory (DISK)</p>
-            <DiskMemory />
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <p>System Uptime</p>
-            <SystemUptime />
-          </Segment>
-        </Grid.Column>
+        <Grid.Row stretched>
+          <Grid.Column>
+            <Segment>
+              <GraphicsAndDisplays />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>
+              <p>Free Memory (DISK)</p>
+              <DiskMemory />
+            </Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>
+              <p>System Uptime</p>
+              <SystemUptime />
+            </Segment>
+            <Segment>
+              <p>System Uptime</p>
+              <SystemUptime />
+            </Segment>
+          </Grid.Column>
+        </Grid.Row >
       </Grid>
     </React.Fragment>
   )

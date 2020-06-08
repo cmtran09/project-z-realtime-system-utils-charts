@@ -20,11 +20,8 @@ export default function Battery() {
   return (
     //render only if it has a battery (hasbattery) if not cancel
     <div>
-      <p>Battery Manufacturer: {batteryData.manufacturer}</p>
-      <p>Battery Serial: {batteryData.serial}</p>
-      <p>{`Max Capacity: ${batteryData.maxcapacity} ${batteryData.capacityUnit}`}</p>
-      <p>{`Designed Capacity: ${batteryData.designedcapacity} ${batteryData.capacityUnit}`}</p>
-      <p>{`Current Capacity: ${batteryData.currentcapacity} ${batteryData.capacityUnit}`}</p>
+      <p>Manufacturer: {batteryData.manufacturer}</p>
+      <p>Serial no: {batteryData.serial}</p>
       <p>{`Cycle Count: ${batteryData.cyclecount}`}</p>
       <BatteryChart
         chartData={[{
