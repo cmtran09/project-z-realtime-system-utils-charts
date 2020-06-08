@@ -3,7 +3,7 @@ import { ResponsiveContainer, RadialBarChart, RadialBar, Legend, Tooltip, PolarA
 
 export default function Days(props) {
   return (
-    // <ResponsiveContainer width="99%">
+    <ResponsiveContainer width="99%">
       <RadialBarChart
         width={125}
         height={125}
@@ -39,6 +39,6 @@ export default function Days(props) {
         </text>
         <Tooltip />
       </RadialBarChart>
-    // </ResponsiveContainer>
+    </ResponsiveContainer>
   )
 }

@@ -98,13 +98,13 @@ export default function SystemUptime() {
 
   return (
     <Grid className='system-uptime-charts' columns={3}>
-      <Grid.Column>
+      <Grid.Column className='system-uptime-col'>
         <Days days={[systemUptime[0]]} />
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column className='system-uptime-col'>
         <Hours hours={[systemUptime[1]]} />
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column className='system-uptime-col'>
         <Mins mins={[systemUptime[2]]} />
       </Grid.Column>
     </Grid>
