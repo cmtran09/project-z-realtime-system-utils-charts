@@ -15,10 +15,12 @@ Next run:
 ```
 yarn
 ```
-Finally, to run on your brower via localhost:xxxx
+Then 
+
 ```
 yarn serve:back
 ```
+Finally navigate to http://localhost:5000/
 
 ## Technologies Used
 * HTML
