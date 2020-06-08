@@ -1,5 +1,5 @@
 import React from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
@@ -25,20 +25,23 @@ export default function CpuUsage() {
   // console.log('cpuTemp', cpuTemp)
 
   return (
-    <LineChart
-      width={800}
-      height={300}
-      data={cpuUsageData}
-      margin={{
-        top: 5, right: 30, left: 20, bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line dataKey="value" />
-    </LineChart>
+    <ResponsiveContainer width="99%">
+
+      <LineChart
+        width={800}
+        height={300}
+        data={cpuUsageData}
+        margin={{
+          top: 5, right: 30, left: 20, bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line dataKey="value" />
+      </LineChart>
+    </ResponsiveContainer>
   )
 }

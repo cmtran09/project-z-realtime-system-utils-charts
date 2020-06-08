@@ -100,7 +100,7 @@ io.on('connection', client => {
     osUtils.cpuUsage((cpuPercent) => {
       client.emit('cpuPercent', {
         value: cpuPercent,
-        name: 'cpuPercent'
+        name: 'tick (2s)'
       })
     })
   }, 2000)
