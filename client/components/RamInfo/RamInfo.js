@@ -11,7 +11,7 @@ export default function RamInfo() {
   useEffect(() => {
     socket.on('ramInfo', (data) => setRamInfo(data))
   }, [])
-
+  console.log(ramInfo)
   return (
     <div>
       <p>{`totalMemMb:${ramInfo.totalMemMb}Mb`}</p>

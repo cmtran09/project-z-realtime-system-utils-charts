@@ -128,15 +128,32 @@ io.on('connection', client => {
   osUtils.cpuUsage((freeMemoryPercentage) => {
     client.emit('freeMemoryPercentage', [{
       value: Number((freeMemoryPercentage * 100).toFixed(2)),
-      name: 'freeMemoryPercentage'
+      name: 'freeMemoryPercentage',
+      label: 'Free'
     }, {
       value: Number(((1 - freeMemoryPercentage) * 100).toFixed(2)),
-      name: 'usedMemoryPercentage'
+      name: 'usedMemoryPercentage',
+      label: 'Used'
     }])
   })
   osu.mem.info()
     .then(info => {
       client.emit('ramInfo', info)
+      osUtils.cpuUsage((freeMemoryPercentage) => {
+        client.emit('freeMemoryPercentage', [{
+          value: Number(((1 - freeMemoryPercentage) * 100).toFixed(2)),
+          name: 'freeMemoryPercentage',
+          label: 'Free',
+          free: info.freeMemMb,
+          total: info.totalMemMb
+        }, {
+          value: Number((freeMemoryPercentage * 100).toFixed(2)),
+          name: 'usedMemoryPercentage',
+          label: 'Used',
+          used: info.usedMemMb,
+          total: info.totalMemMb
+        }])
+      })
     })
     .catch(err => console.log(err))
   osu.os.oos()

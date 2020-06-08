@@ -28,8 +28,8 @@ export default function Dashboard() {
         </Grid.Column>
         <Grid.Column>
           <Segment>
-            <FreeMemoryPercentage />
             <p>Free Memory (RAM) Percentage</p>
+            <FreeMemoryPercentage />
             <RamInfo />
           </Segment>
         </Grid.Column>
