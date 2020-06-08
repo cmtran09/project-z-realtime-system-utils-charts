@@ -24,7 +24,7 @@ const renderActiveShape = (props) => {
   return (
     <g>
       <text x={cx} y={cy} dy={8} textAnchor="middle"
-        fill={fill}>{payload.name === 'usedMemoryPercentage' ? 'Used RAM' : 'Free RAM'}
+        fill={'#ffbcb6'}>{payload.name === 'usedMemoryPercentage' ? 'Used RAM' : 'Free RAM'}
       </text>
       <Sector
         cx={cx}
@@ -33,7 +33,7 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius}
         startAngle={startAngle}
         endAngle={endAngle}
-        fill={'#00C49F'}
+        fill={'#ff8373'}
       />
       <Sector
         cx={cx}
@@ -42,12 +42,12 @@ const renderActiveShape = (props) => {
         endAngle={endAngle}
         innerRadius={outerRadius + 6}
         outerRadius={outerRadius + 10}
-        fill={'#00C49F'}
+        fill={'#ff8373'}
       />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={'#00C49F'} fill="none" />
-      <circle cx={ex} cy={ey} r={2} fill={'#00C49F'} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`${value}%`}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
+      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={'#ff8373'} fill="none" />
+      <circle cx={ex} cy={ey} r={2} fill={'#ff8373'} stroke="none" />
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#ffbcb6">{`${value}%`}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#ffbcb6">
         {`${payload.used || payload.free}Mb`}
       </text>
     </g>

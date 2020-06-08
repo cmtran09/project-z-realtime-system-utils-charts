@@ -33,9 +33,9 @@ export default function BatteryChart(props) {
         layout="vertical"
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
-        <XAxis type="number" />
-        <YAxis type="category" dataKey="name" />
-        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis tick={{ fill: '#ffbcb6' }} type="number" />
+        <YAxis tick={{ fill: '#ffbcb6' }} type="category" dataKey="name" />
+        {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <Tooltip />
         <Legend />
         <Bar animationDuration={4500} dataKey="Designed" fill="#8884d8" />

@@ -12,7 +12,6 @@ const App = () => {
       <div className="background">
         <NavBar />
         <Dashboard />
-        <p>hello world</p>
       </div>
     </React.Fragment>
   )

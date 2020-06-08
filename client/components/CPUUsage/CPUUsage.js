@@ -35,8 +35,8 @@ export default function CpuUsage() {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis tick={{ fill: '#ffbcb6' }} dataKey="name" />
+        <YAxis tick={{ fill: '#ffbcb6' }} />
         <Tooltip />
         <Legend />
         <Line dataKey="value" />

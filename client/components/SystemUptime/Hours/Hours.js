@@ -12,6 +12,7 @@ export default function Hours(props) {
         data={props.hours}
         startAngle={360}
         endAngle={0}
+        fill='#ff8373'
       >
         {/* write a funtion to so one revolution is 1hr */}
         <PolarAngleAxis

@@ -12,6 +12,7 @@ export default function Days(props) {
         data={props.days}
         startAngle={360}
         endAngle={0}
+        fill='#ff8373'
       >
         {/* write a funtion to so one revolution is 1hr */}
         <PolarAngleAxis
@@ -29,6 +30,7 @@ export default function Days(props) {
           dataKey='value' />
         {/* <Legend iconSize={10} width={120} height={140} layout='vertical' verticalAlign='middle' align="right" /> */}
         <text
+          id='days-label'
           x={125 / 2}
           y={125 / 2}
           textAnchor="middle"
