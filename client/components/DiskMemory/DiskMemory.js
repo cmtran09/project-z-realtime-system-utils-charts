@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
 import DiskMemoryChart from './DiskMemoryChart/DiskMemoryChart'
+import './DiskMemory.scss'
 
 const socket = io('http://localhost:5000', {
   transports: ['websocket', 'polling']
@@ -18,10 +19,10 @@ export default function DiskMemory() {
 
   return (
     <React.Fragment>
-      <div>
-        <p>{`Total Disk Size: ${diskInfo.totalGb}`}</p>
-        <p>{`Used Space: ${Number(diskInfo.totalGb - diskInfo.freeGb).toFixed(1)}`}</p>
-        <p>{`Free Space: ${diskInfo.freeGb}`}</p>
+      <div className='diskmem-text'>
+        <p>{`Total Disk Size (Gb): ${diskInfo.totalGb}`}</p>
+        <p>{`Used Space (Gb): ${Number(diskInfo.totalGb - diskInfo.freeGb).toFixed(1)}`}</p>
+        <p>{`Free Space (Gb): ${diskInfo.freeGb}`}</p>
       </div>
       <DiskMemoryChart diskData={[
         {
