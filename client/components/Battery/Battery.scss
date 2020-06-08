@@ -1,0 +1,15 @@
+
+  p.battery-info {
+    // display: none;
+    // color: green;
+
+  }
+
+@media (max-width: 768px) {
+  p.battery-info {
+    // color: red;
+    display: none
+
+  }
+}
+
