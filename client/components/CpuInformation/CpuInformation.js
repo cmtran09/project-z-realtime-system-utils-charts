@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
+import './CpuInformation.scss'
+
 const socket = io('http://localhost:5000', {
   transports: ['webscoket', 'polling']
 })
@@ -20,13 +22,14 @@ export default function CpuInformation() {
 
   return (
     <div>
-      <p>Manufacturer: {cpuData.manufacturer}</p>
-      <p>Brand: {cpuData.brand}</p>
-      <p>{`Speed: ${cpuData.speed}GHz`}</p>
-      <p>Max Speed: {cpuData.speedmax}</p>
-      <p>Min Speed: {cpuData.speedmin}</p>
-      <p>Number of Cores: {cpuData.cores}</p>
-      <p>Physical Cores: {cpuData.physicalCores}</p>
+      <p id='cpu-title'>Cpu Usage</p>
+      <p className='cpu-data-text'>Manufacturer: {cpuData.manufacturer}</p>
+      <p className='cpu-data-text'>Brand: {cpuData.brand}</p>
+      <p className='cpu-data-text'>{`Speed: ${cpuData.speed}GHz`}</p>
+      <p className='cpu-data-text'>Max Speed: {cpuData.speedmax}</p>
+      <p className='cpu-data-text'>Min Speed: {cpuData.speedmin}</p>
+      <p className='cpu-data-text'>Number of Cores: {cpuData.cores}</p>
+      <p className='cpu-data-text'>Physical Cores: {cpuData.physicalCores}</p>
     </div>
   )
 }

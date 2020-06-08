@@ -1,0 +1,15 @@
+  .cpu-data-text {
+    // display: none;
+    // color: green;
+  }
+
+
+@media (max-width: 768px) {
+  .cpu-data-text {
+    // color: red;
+    display: none
+  }
+  .cpu-data-text#cpu-title {
+    display: inline;
+  }
+}
