@@ -19,7 +19,9 @@ export default function Battery() {
 
   return (
     //render only if it has a battery (hasbattery) if not cancel
-    <div>
+    <div 
+    style={{ width: '100%', height: '200px' }}
+    >
       <p>Manufacturer: {batteryData.manufacturer}</p>
       <p>Serial no: {batteryData.serial}</p>
       <p>{`Cycle Count: ${batteryData.cyclecount}`}</p>

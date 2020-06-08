@@ -77,20 +77,20 @@ export default function FreeMemoryPercentage() {
   console.log('freeMemoryPercentage', freeMemoryPercentage)
 
   return (
-    // <ResponsiveContainer width={700} height="80%">
-    <PieChart width={circleSize} height={circleSize / 1.7}>
-      <Pie
-        activeIndex={activeIndex}
-        activeShape={renderActiveShape}
-        data={freeMemoryPercentage}
-        cx={circleSize / 2}
-        cy={circleSize / 3.7}
-        innerRadius={60}
-        outerRadius={80}
-        fill="#8884d8"
-        onMouseEnter={onPieEnter}
-      />
-    </PieChart>
-    // </ResponsiveContainer>
+    <ResponsiveContainer width='99%'>
+      <PieChart width={circleSize} height={circleSize / 1.9}>
+        <Pie
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={freeMemoryPercentage}
+          cx={circleSize / 2}
+          cy={circleSize / 3.7}
+          innerRadius={60}
+          outerRadius={80}
+          fill="#8884d8"
+          onMouseEnter={onPieEnter}
+        />
+      </PieChart>
+    </ResponsiveContainer>
   )
 }

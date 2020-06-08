@@ -26,7 +26,6 @@ export default function CpuUsage() {
 
   return (
     <ResponsiveContainer width="99%">
-
       <LineChart
         width={800}
         height={300}

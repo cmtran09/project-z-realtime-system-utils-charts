@@ -57,28 +57,28 @@ export default function Dashboard() {
         </Grid.Column>
       </Grid>
       <Grid stackable columns={3}>
-        <Grid.Row stretched>
-          <Grid.Column>
-            <Segment>
-              <GraphicsAndDisplays />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>
-              <p>Free Memory (DISK)</p>
-              <DiskMemory />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>
-              <p>System Uptime</p>
-              <SystemUptime />
-            </Segment>
-            <Segment>
-              <p>System Uptime</p>
-              <SystemUptime />
-            </Segment>
-          </Grid.Column>
+      <Grid.Row stretched>
+        <Grid.Column>
+          <Segment>
+            <GraphicsAndDisplays />
+          </Segment>
+        </Grid.Column>
+        <Grid.Column>
+          <Segment>
+            <p>Free Memory (DISK)</p>
+            <DiskMemory />
+          </Segment>
+        </Grid.Column>
+        <Grid.Column>
+          <Segment>
+            <p>System Uptime</p>
+            <SystemUptime />
+          </Segment>
+          <Segment>
+            <p>System Uptime</p>
+            <SystemUptime />
+          </Segment>
+        </Grid.Column>
         </Grid.Row >
       </Grid>
     </React.Fragment>
