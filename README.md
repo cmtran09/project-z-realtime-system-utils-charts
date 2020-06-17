@@ -23,7 +23,7 @@ yarn serve:back
 Finally navigate to http://localhost:5000/
 
 See below for a quick demo of the application.
-![Demo](https://imgur.com/AXBZ9P3.gif)
+![Demo](./readme/demo.gif)
 
 ## Technologies Used
 * HTML
